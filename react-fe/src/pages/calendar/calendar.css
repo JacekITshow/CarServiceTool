@@ -1,0 +1,23 @@
+
+.overflow-breakword {
+    overflow-wrap: break-word;
+}
+
+.col-14 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 14.2857%;
+}
+
+@media screen and (min-width: 1200px) {
+    .xl\:col-14 {
+        flex: 0 0 auto;
+        padding: 0.5rem;
+        width: 14%;
+    }
+    .xl\:col-13 {
+        flex: 0 0 auto;
+        width: 13%;
+        padding: 0.5rem;
+    }
+    }

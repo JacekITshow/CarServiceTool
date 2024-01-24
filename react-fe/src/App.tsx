@@ -1,43 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef } from 'react';
 import './App.css';
-import {PrimeReactProvider} from "primereact/api";
-import {Checkbox} from "primereact/checkbox";
-import {ToggleButton} from "primereact/togglebutton";
+import {BrowserRouter} from "react-router-dom";
 
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/lara-light-green/theme.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
+import Navigation from "./components/navigation/Navigation";
+import {Toast} from "primereact/toast";
+import {userDataDTO} from "./AppDTO";
+import MainRouter from "./MainRouter";
 
 function App() {
+
+    const toast:React.RefObject<Toast> = useRef<Toast>(null);
+
+    const userData: userDataDTO = {
+        id: 1,
+        login: "jsmith",
+        firstName: "John",
+        surname: "Smith",
+        gender: "male",
+        email: "example@mail.com",
+        phoneNumber: 666777888,
+        birthday: new Date(2023,12,20),
+        description: "test description"
+    };
+
     return (
-        <PrimeReactProvider>
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
-                    </p>
-                    <div className="mb-3 font-bold text-3xl">
-                        <span className="text-900">One Product, </span>
-                        <span className="text-blue-600">Many Solutions</span>
-                    </div>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React
-                    </a>
-                  <Checkbox checked={false}/>
-                  <ToggleButton />
-                </header>
-
-
-            </div>
-        </PrimeReactProvider>
+        <BrowserRouter>
+            <Navigation userData={userData}/>
+            <MainRouter/>
+        </BrowserRouter>
     );
 }
 
