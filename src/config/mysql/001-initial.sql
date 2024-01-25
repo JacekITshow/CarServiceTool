@@ -127,7 +127,7 @@ CREATE TABLE ServiceToRepair
     id         INT NOT NULL AUTO_INCREMENT,
     repair_id  INT NOT NULL,
     service_id INT NOT NULL,
-    cost       DECIMAL(2, 2),
+    cost       DECIMAL(10, 2),
     PRIMARY KEY (id),
     FOREIGN KEY (repair_id) REFERENCES Repair (id),
     FOREIGN KEY (service_id) REFERENCES Service (id)
@@ -138,8 +138,8 @@ CREATE TABLE PartsToRepair
 (
     id          INT NOT NULL AUTO_INCREMENT,
     repair_id   INT NOT NULL,
-    name        INT NOT NULL,
-    cost        DECIMAL(2, 2),
+    name        VARCHAR(5000) NOT NULL,
+    cost        DECIMAL(10, 2),
     description VARCHAR(5000),
     part_code   VARCHAR(5000),
     PRIMARY KEY (id),
