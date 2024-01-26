@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 
@@ -9,6 +9,7 @@ import Navigation from "./components/navigation/Navigation";
 import {Toast} from "primereact/toast";
 import {userDataDTO} from "./AppDTO";
 import MainRouter from "./MainRouter";
+import {TestInfo} from "./pages/TestInfo";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <BrowserRouter>
             <Navigation userData={userData}/>
             <MainRouter/>
+            <TestInfo />
         </BrowserRouter>
     );
 }
