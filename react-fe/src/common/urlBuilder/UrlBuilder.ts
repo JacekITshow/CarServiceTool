@@ -7,7 +7,7 @@ export class UrlBuilder {
     }
 
     value(value: any): UrlBuilder {
-        this.url += '/${value}';
+        this.url += `/${value}`;
         return this;
     }
 
