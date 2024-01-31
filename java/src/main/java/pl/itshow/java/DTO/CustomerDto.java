@@ -1,10 +1,12 @@
 package pl.itshow.java.DTO;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
 public class CustomerDto implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -5087457987080272447L;
 
     private Long id;
