@@ -1,8 +1,8 @@
 -- Create DataBase
 CREATE SCHEMA `db`;
 
--- Create Table User
-CREATE TABLE User
+-- Create Table user
+CREATE TABLE user
 (
     id           INT          NOT NULL AUTO_INCREMENT,
     login        VARCHAR(255) NOT NULL,
@@ -17,46 +17,46 @@ CREATE TABLE User
     PRIMARY KEY (id)
 );
 
--- Create Table Role
-CREATE TABLE Role
+-- Create Table role
+CREATE TABLE role
 (
     id   INT          NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
--- Create Table RoleToUser
-CREATE TABLE RoleToUser
+-- Create Table role_to_user
+CREATE TABLE role_to_user
 (
     id      INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     role_id INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES User (id),
-    FOREIGN KEY (role_id) REFERENCES Role (id)
+    FOREIGN KEY (user_id) REFERENCES user (id),
+    FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
--- Create Table Permission
-CREATE TABLE Permission
+-- Create Table permission
+CREATE TABLE permission
 (
     id   INT          NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
--- Create Table PermissionToRole
-CREATE TABLE PermissionToRole
+-- Create Table permission_to_role
+CREATE TABLE permission_to_role
 (
     id            INT NOT NULL AUTO_INCREMENT,
     permission_id INT NOT NULL,
     role_id       INT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (permission_id) REFERENCES Permission (id),
-    FOREIGN KEY (role_id) REFERENCES Role (id)
+    FOREIGN KEY (permission_id) REFERENCES permission (id),
+    FOREIGN KEY (role_id) REFERENCES role (id)
 );
 
--- Create Table ChangePassword
-CREATE TABLE ChangePassword
+-- Create Table change_password
+CREATE TABLE change_password
 (
     id       INT          NOT NULL AUTO_INCREMENT,
     user_id  INT          NOT NULL,
@@ -65,8 +65,8 @@ CREATE TABLE ChangePassword
     PRIMARY KEY (id)
 );
 
--- Create Table Customer
-CREATE TABLE Customer
+-- Create Table customer
+CREATE TABLE customer
 (
     id           INT          NOT NULL AUTO_INCREMENT,
     first_name   VARCHAR(255) NOT NULL,
@@ -79,8 +79,8 @@ CREATE TABLE Customer
     PRIMARY KEY (id)
 );
 
--- Create Table Car
-CREATE TABLE Car
+-- Create Table car
+CREATE TABLE car
 (
     id            INT          NOT NULL AUTO_INCREMENT,
     customer_id   INT          NOT NULL,
@@ -90,15 +90,15 @@ CREATE TABLE Car
     brand         VARCHAR(255) NOT NULL,
     model         VARCHAR(255) NOT NULL,
     model_code    VARCHAR(255) NOT NULL,
-    fuel_type     VARCHAR(255) NOT NULL,
+    fueltype     VARCHAR(255) NOT NULL,
     year          DATE         NOT NULL,
     description   VARCHAR(5000),
     PRIMARY KEY (id),
-    FOREIGN KEY (customer_id) REFERENCES Customer (id)
+    FOREIGN KEY (customer_id) REFERENCES customer (id)
 );
 
--- Create Table Repair
-CREATE TABLE Repair
+-- Create Table repair
+CREATE TABLE repair
 (
     id             INT      NOT NULL AUTO_INCREMENT,
     car_id         INT      NOT NULL,
@@ -106,11 +106,11 @@ CREATE TABLE Repair
     estimated_date DATETIME,
     description    VARCHAR(5000),
     PRIMARY KEY (id),
-    FOREIGN KEY (car_id) REFERENCES Car (id)
+    FOREIGN KEY (car_id) REFERENCES car (id)
 );
 
--- Create Table Service
-CREATE TABLE Service
+-- Create Table service
+CREATE TABLE service
 (
     id               INT          NOT NULL AUTO_INCREMENT,
     name             VARCHAR(255) NOT NULL,
@@ -118,23 +118,23 @@ CREATE TABLE Service
     min_cost DOUBLE NOT NULL,
     max_cost         INT          NOT NULL,
     description      VARCHAR(5000),
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
 );
 
--- Create Table ServiceToRepair
-CREATE TABLE ServiceToRepair
+-- Create Table service_to_repair
+CREATE TABLE service_to_repair
 (
     id         INT NOT NULL AUTO_INCREMENT,
     repair_id  INT NOT NULL,
     service_id INT NOT NULL,
     cost       DECIMAL(10, 2),
     PRIMARY KEY (id),
-    FOREIGN KEY (repair_id) REFERENCES Repair (id),
-    FOREIGN KEY (service_id) REFERENCES Service (id)
+    FOREIGN KEY (repair_id) REFERENCES repair (id),
+    FOREIGN KEY (service_id) REFERENCES service (id)
 );
 
--- Create Table ServiceToRepair
-CREATE TABLE PartsToRepair
+-- Create Table parts_to_repair
+CREATE TABLE parts_to_repair
 (
     id          INT NOT NULL AUTO_INCREMENT,
     repair_id   INT NOT NULL,
@@ -143,5 +143,5 @@ CREATE TABLE PartsToRepair
     description VARCHAR(5000),
     part_code   VARCHAR(5000),
     PRIMARY KEY (id),
-    FOREIGN KEY (repair_id) REFERENCES Repair (id)
+    FOREIGN KEY (repair_id) REFERENCES repair (id)
 );
