@@ -33,12 +33,6 @@ export default function UsersList() {
         setCustomer(customersList);
     };
 
-    const products = [
-        {id: 1, name: "test", cost: 1},
-        {id: 2, name: "test2", cost: 2},
-        {id: 3, name: "test3", cost: 3}
-    ];
-
     const columns: ColumnMeta[] = [
         {field: 'id', header: 'id'},
         {field: 'first_name', header: 'First Name'},
