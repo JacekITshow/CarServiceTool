@@ -8,7 +8,7 @@ export const TestInfo: React.FC = () => {
     const [info, setInfo] = useState<string>();
 
     const getInfo = (): Promise<string> => {
-        return get<string>(new UrlBuilder().path("info").build());
+        return get<string>(new UrlBuilder().path("test").path("info").build());
     };
 
     const setNewInfo = async () => {

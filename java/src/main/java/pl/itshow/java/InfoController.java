@@ -20,8 +20,11 @@ public class InfoController {
 
     @GetMapping("/info")
     String info() {
-        List<CustomerDto> maleCustomers = customerDao.findCustomersByGender("Male");
-
         return "Current time is: " + new Date();
+    }
+
+    @GetMapping("/male")
+    List<CustomerDto> male() {
+        return customerDao.findCustomersByGender("Male");
     }
 }
