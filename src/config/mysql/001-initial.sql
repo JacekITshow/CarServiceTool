@@ -113,11 +113,11 @@ CREATE TABLE repair
 -- Create Table service
 CREATE TABLE service
 (
-    id               INT          NOT NULL AUTO_INCREMENT,
-    name             VARCHAR(255) NOT NULL,
-    recommended_cost INT          NOT NULL,
-    min_cost DOUBLE NOT NULL,
-    max_cost         INT          NOT NULL,
+    id               INT            NOT NULL AUTO_INCREMENT,
+    name             VARCHAR(255)   NOT NULL,
+    recommended_cost DECIMAL(10, 2) NOT NULL,
+    min_cost         DECIMAL(10, 2),
+    max_cost         DECIMAL(10, 2),
     description      VARCHAR(5000),
     PRIMARY KEY (id)
 );
@@ -135,7 +135,7 @@ CREATE TABLE service_to_repair
 );
 
 -- Create Table parts_to_repair
-CREATE TABLE parts_to_repair
+CREATE TABLE part
 (
     id          INT           NOT NULL AUTO_INCREMENT,
     repair_id   INT           NOT NULL,
@@ -144,5 +144,5 @@ CREATE TABLE parts_to_repair
     description VARCHAR(5000),
     part_code   VARCHAR(5000),
     PRIMARY KEY (id),
-    CONSTRAINT FK_PARTS__REPAIR FOREIGN KEY (repair_id) REFERENCES repair (id)
+    CONSTRAINT FK_PART__REPAIR FOREIGN KEY (repair_id) REFERENCES repair (id)
 );

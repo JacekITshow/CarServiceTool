@@ -8,7 +8,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
-import pl.itshow.java.DTO.CustomerDto;
+import pl.itshow.java.dto.CustomerDto;
 import pl.itshow.java.entity.Customer;
 
 import java.util.List;

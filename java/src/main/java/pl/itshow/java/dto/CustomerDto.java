@@ -1,4 +1,4 @@
-package pl.itshow.java.DTO;
+package pl.itshow.java.dto;
 
 import java.io.Serial;
 import java.io.Serializable;

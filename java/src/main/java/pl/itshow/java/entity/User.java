@@ -3,49 +3,66 @@ package pl.itshow.java.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table( name = "customer")
-public class Customer {
+@Table(name = "user")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
+
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "first_name")
-    String firstName;
+    private String firstName;
 
-    @Column(name = "surname")
-    String surname;
+    @Column(name = "last_name")
+    private String last_name;
 
     @Column(name = "gender")
-    String gender;
+    private String gender;
 
     @Column(name = "email")
-    String email;
+    private String email;
 
     @Column(name = "phone_number")
-    Long phoneNumber;
+    private Long phoneNumber;
 
     @Column(name = "birthdate")
-    Date birthdate;
+    private Date birthdate;
 
     @Column(name = "description")
-    String description;
+    private String description;
 
-    public Customer() {
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "role_to_user",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
+    public User() {
     }
 
-    public Customer(Long id, String firstName, String surname, String gender, String email, Long phoneNumber, Date birthdate, String description) {
+    public User(Long id, String login, String password, String firstName, String last_name, String gender, String email, Long phoneNumber,
+                Date birthdate, String description, Set<Role> roles) {
         this.id = id;
+        this.login = login;
+        this.password = password;
         this.firstName = firstName;
-        this.surname = surname;
+        this.last_name = last_name;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
         this.description = description;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -56,6 +73,22 @@ public class Customer {
         this.id = id;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -64,12 +97,12 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getGender() {
@@ -112,17 +145,11 @@ public class Customer {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
-                ", gender='" + gender + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", birthDate=" + birthdate +
-                ", description='" + description + '\'' +
-                '}';
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

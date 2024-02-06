@@ -84,7 +84,7 @@ VALUES (1, 1, 100),
        (3, 4, 60);
 
 -- Create Sample parts_to_repair
-INSERT INTO parts_to_repair (repair_id, name, cost, description, part_code)
+INSERT INTO part (repair_id, name, cost, description, part_code)
 VALUES (1, 'Engine oil', 30, 'Synthetic oil suitable for the vehicle', '12345'),
        (1, 'Air filter', 20, 'High-quality air filter to improve engine performance', '67890'),
        (2, 'Spark plugs', 50, 'Set of four spark plugs to improve engine performance', '123456'),
