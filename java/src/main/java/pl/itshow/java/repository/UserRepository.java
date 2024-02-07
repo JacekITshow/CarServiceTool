@@ -5,5 +5,5 @@ import pl.itshow.java.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findById(int id);
+    User findById(long id);
 }

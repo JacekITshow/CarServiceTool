@@ -1,9 +1,17 @@
 package pl.itshow.java.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table( name = "permission")
+@Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Permission {
 
     @Id
@@ -12,28 +20,4 @@ public class Permission {
 
     @Column(name = "name")
     private String name;
-
-    public Permission() {
-    }
-
-    public Permission(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
