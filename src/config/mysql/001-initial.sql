@@ -70,7 +70,7 @@ CREATE TABLE customer
 (
     id           INT          NOT NULL AUTO_INCREMENT,
     first_name   VARCHAR(255) NOT NULL,
-    surname      VARCHAR(255) NOT NULL,
+    last_name    VARCHAR(255) NOT NULL,
     gender       VARCHAR(255),
     email        VARCHAR(255),
     phone_number INT          NOT NULL,

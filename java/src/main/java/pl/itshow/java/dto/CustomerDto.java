@@ -13,7 +13,7 @@ public class CustomerDto implements Serializable {
 
     private String firstName;
 
-    private String surname;
+    private String lastName;
 
     private String gender;
 
@@ -28,11 +28,11 @@ public class CustomerDto implements Serializable {
     public CustomerDto() {
     }
 
-    public CustomerDto(Long id, String firstName, String surname, String gender, String email, Long phoneNumber,
+    public CustomerDto(Long id, String firstName, String lastName, String gender, String email, Long phoneNumber,
                        Date birthdate, String description) {
         this.id = id;
         this.firstName = firstName;
-        this.surname = surname;
+        this.lastName = lastName;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -56,12 +56,12 @@ public class CustomerDto implements Serializable {
         this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getGender() {

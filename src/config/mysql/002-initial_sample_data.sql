@@ -50,7 +50,7 @@ VALUES (1, '$2y$10$3kI.k7.a02pO9j202x8s6u.b69432Yx6224891157.1114226171', '2023-
        (2, '$2y$10$82xnX/26o5f0.P192i94f.m914293077843795030107782156', '2023-11-05 07:12:34');
 
 -- Create Sample customer
-INSERT INTO customer (first_name, surname, gender, email, phone_number, birthdate, description)
+INSERT INTO customer (first_name, last_name, gender, email, phone_number, birthdate, description)
 VALUES ('John', 'Doe', 'Male', 'johndoe@email.com', '1234567890', '1980-01-01', 'Regular customer'),
        ('Jane', 'Smith', 'Female', 'janesmith@email.com', '1234567891', '1985-02-02', 'Frequent customer'),
        ('Peter', 'Jones', 'Male', 'peterjones@email.com', '1234567892', '1990-03-03', 'New customer');

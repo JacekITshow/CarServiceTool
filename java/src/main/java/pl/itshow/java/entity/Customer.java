@@ -15,8 +15,8 @@ public class Customer {
     @Column(name = "first_name")
     String firstName;
 
-    @Column(name = "surname")
-    String surname;
+    @Column(name = "last_name")
+    String lastName;
 
     @Column(name = "gender")
     String gender;
@@ -37,10 +37,10 @@ public class Customer {
 
     }
 
-    public Customer(Long id, String firstName, String surname, String gender, String email, Long phoneNumber, Date birthdate, String description) {
+    public Customer(Long id, String firstName, String lastName, String gender, String email, Long phoneNumber, Date birthdate, String description) {
         this.id = id;
         this.firstName = firstName;
-        this.surname = surname;
+        this.lastName = lastName;
         this.gender = gender;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -64,12 +64,12 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getGender() {
@@ -117,7 +117,7 @@ public class Customer {
         return "Customer{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", surname='" + surname + '\'' +
+                ", surname='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber=" + phoneNumber +
