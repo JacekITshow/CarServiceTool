@@ -38,7 +38,7 @@ public class UserController {
     }
     @PostMapping()
     public void createUser (@RequestBody UserDto userDto) {
-        userDao.register(userDto);
+        userDao.createUser(userDto);
     }
 
     @PatchMapping()
