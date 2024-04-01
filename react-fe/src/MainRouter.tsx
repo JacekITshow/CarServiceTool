@@ -8,6 +8,7 @@ import CarsList from "./pages/carsList/CarsList";
 import CarProfile from "./pages/carProfile/CarProfile";
 import Calendar from "./pages/calendar/Calendar";
 import UserProfile from "./pages/userProfile/UserProfile";
+import Administration from "./pages/administration/Administration";
 const MainRouter: React.FC = () => {
     return (
         <Routes>
@@ -18,6 +19,8 @@ const MainRouter: React.FC = () => {
             <Route path="/calendar" element={<Calendar/>} />
             <Route path="/car/:id" element={<CarProfile/>} />
             <Route path="/userProfile/:id" element={<UserProfile />}  />
+            <Route path="/administration" element={<Administration />}  />
+            <Route path="/administration/*" element={<Administration />}  />
 
             <Route path="/404" element={ <NotFoundPage /> } />
             <Route path="*" element={ <Navigate to="/404" replace />} />

@@ -80,6 +80,12 @@ export default function Navigation(props: NavigationProps) {
             icon: 'pi pi-envelope',
             badge: 3,
             url: '/contact'
+        },
+        {
+            label: 'Administration',
+            icon: 'pi pi-palette',
+            badge: 3,
+            url: '/administration'
         }
     ];
 

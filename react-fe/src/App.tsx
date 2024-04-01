@@ -51,7 +51,7 @@ function App() {
         <BrowserRouter>
             {/*<Translations />*/}
             <Navigation userData={userData}/>
-            <div className="mt-5">
+            <div className="mt-5 xl:w-10 mx-auto">
                 <MainRouter />
             </div>
             <TestInfo />
