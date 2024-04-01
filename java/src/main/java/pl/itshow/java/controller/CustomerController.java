@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.itshow.java.dto.CustomerDto;
 import pl.itshow.java.entity.Customer;
-import pl.itshow.java.repository.CustomerDao;
+import pl.itshow.java.repository.CustomerDaoImpl;
 import pl.itshow.java.repository.CustomerRepository;
 
 import java.util.List;
@@ -18,14 +18,14 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    CustomerDao customerDao;
+    CustomerDaoImpl customerDaoImpl;
 
     @Autowired
     CustomerRepository customerRepository;
 
     @GetMapping("/male")
     List<CustomerDto> getAllMaleCustomers() {
-        return customerDao.findCustomersByGender("Male");
+        return customerDaoImpl.findCustomersByGender("Male");
     }
 
     @GetMapping("/{customerId}")

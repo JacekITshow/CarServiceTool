@@ -8,5 +8,9 @@ public interface UserDao {
 
     void updateUser(UserDto userDto);
 
-    void deleteUser(Long userId);
+    void updateUserPassword(int userId, String password);
+
+    void updateUserEmail(int userId, String email);
+
+    void deleteUser(int userId);
 }

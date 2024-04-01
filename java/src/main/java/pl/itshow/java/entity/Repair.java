@@ -36,7 +36,6 @@ public class Repair {
     @Column(name = "description")
     private String description;
 
-
     @OneToMany(fetch = FetchType.EAGER, mappedBy="repair")
     private Set<ServiceToRepair> serviceToRepairs;
 

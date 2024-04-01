@@ -1,6 +1,7 @@
 package pl.itshow.java.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AbstractDaoImpl {
 
-//    @PersistenceContext
+    @PersistenceContext
     protected EntityManager entityManager;
 
     protected static final Logger logger = LogManager.getLogger();

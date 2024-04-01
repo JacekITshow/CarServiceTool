@@ -31,23 +31,35 @@ public class UserController {
     public User getUserById (@PathVariable int userId) {
         return userRepository.findById(userId);
     }
+
     @GetMapping("/list/{page}")
     public Page<User> getUsersListForPage (@PathVariable int page) {
         Pageable pageable = Pageable.ofSize(2).withPage(page);
         return userRepository.findAll(pageable);
     }
+
     @PostMapping()
     public void createUser (@RequestBody UserDto userDto) {
         userDao.createUser(userDto);
     }
 
+    @PostMapping("/update/password")
+    public void updateUserPassword (@RequestBody int userId, @RequestBody String password) {
+        userDao.updateUserPassword(userId, password);
+    }
+
+    @PostMapping("/update/email")
+    public void updateUserEmail (@RequestBody int userId, @RequestBody String email) {
+        userDao.updateUserEmail(userId, email);
+    }
+
     @PatchMapping()
     public void updateUser (UserDto userDto) {
-
+        userDao.updateUser(userDto);
     }
 
     @DeleteMapping("{userId}")
-    public void deleteUser (@PathVariable long userId) {
+    public void deleteUser (@PathVariable int userId) {
         userDao.deleteUser(userId);
     }
 }
