@@ -1,32 +1,55 @@
-import React from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
+import React, {FC, useEffect, useState} from 'react';
+import {Button} from "primereact/button";
+import {Checkbox} from "primereact/checkbox";
+import {InputText} from "primereact/inputtext";
+import {getUserData, UserDto} from "./UserProfile.service";
 
-interface ColumnMeta {
-    field: string;
-    header: string;
+interface UserProfileProps {
+    userId: number;
 }
-export default function UserProfile() {
 
-    const products = [
-        {id: 1, name: "test", cost: 1},
-        {id: 2, name: "test2", cost: 2},
-        {id: 3, name: "test3", cost: 3}
-    ];
+    export default function UserProfile() {
 
-    const columns: ColumnMeta[] = [
-        {field: 'id', header: 'id'},
-        {field: 'name', header: 'Name'},
-        {field: 'cost', header: 'cost'}
-    ];
+    const [checked, setChecked] = useState(false);
+    const [userDto, setUserDto] = useState<UserDto>();
 
+    useEffect(() => {
+        getUserDto(1);
+    }, []);
+
+    const getUserDto = async (userId: number): Promise<void> => {
+        const userDto: UserDto = await getUserData(userId);
+        setUserDto(userDto);
+    };
     return (
-        <div className="card">
-            <DataTable value={products} tableStyle={{ minWidth: '50rem' }}>
-                {columns.map((col, i) => (
-                    <Column key={col.field} field={col.field} header={col.header} />
-                ))}
-            </DataTable>
+
+        <div className="flex align-items-center justify-content-center">
+            <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+                <div className="text-center mb-5">
+                    <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+                    <span className="text-600 font-medium line-height-3">{userDto?.login}</span>
+                    <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+                </div>
+
+                <div>
+                    <label htmlFor="email" className="block text-900 font-medium mb-2">Email</label>
+                    <InputText id="email" type="text" placeholder="Email address" className="w-full mb-3"/>
+
+                    <label htmlFor="password" className="block text-900 font-medium mb-2">Password</label>
+                    <InputText id="password" type="password" placeholder="Password" className="w-full mb-3"/>
+
+                    <div className="flex align-items-center justify-content-between mb-6">
+                        <div className="flex align-items-center">
+                            <Checkbox id="rememberme" onChange={e => setChecked(!checked)} checked={checked} className="mr-2"/>
+                            <label htmlFor="rememberme" className="text-900">Remember me</label>
+                        </div>
+                        <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
+                    </div>
+
+                    <Button label="Sign In" icon="pi pi-user" className="w-full"/>
+                </div>
+            </div>
         </div>
+
     );
 }

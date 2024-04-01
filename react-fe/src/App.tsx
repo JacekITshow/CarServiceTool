@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 
@@ -10,6 +10,11 @@ import {Toast} from "primereact/toast";
 import {userDataDTO} from "./AppDTO";
 import MainRouter from "./MainRouter";
 import {TestInfo} from "./pages/TestInfo";
+import Translations from "./common/translations/Translations";
+import {UserDto} from "./pages/usersList/UsersList.service";
+import {get} from "./common/urlBuilder/GenericHttp";
+import {UrlBuilder} from "./common/urlBuilder/UrlBuilder";
+import {TranslationDto} from "./App.service";
 
 function App() {
 
@@ -27,10 +32,28 @@ function App() {
         description: "test description"
     };
 
+    const [translations, setTranslations] = useState<TranslationDto[]>();
+
+    const getTranslations = (): Promise<TranslationDto[]> => {
+        return get<TranslationDto[]>(new UrlBuilder().path("translation").path("all").build());
+    };
+
+    const setNewTranslations = async () => {
+        const translationList: TranslationDto[] = await getTranslations();
+        setTranslations(translationList);
+    };
+
+    useEffect(() => {
+        setNewTranslations();
+    }, []);
+
     return (
         <BrowserRouter>
+            {/*<Translations />*/}
             <Navigation userData={userData}/>
-            <MainRouter/>
+            <div className="mt-5">
+                <MainRouter />
+            </div>
             <TestInfo />
         </BrowserRouter>
     );
