@@ -18,26 +18,26 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     @Column(name = "first_name")
-    String firstName;
+    private String firstName;
 
     @Column(name = "last_name")
-    String lastName;
+    private String lastName;
 
     @Column(name = "gender")
-    String gender;
+    private String gender;
 
     @Column(name = "email")
-    String email;
+    private String email;
 
     @Column(name = "phone_number")
-    Long phoneNumber;
+    private Long phoneNumber;
 
     @Column(name = "birthdate")
-    Date birthdate;
+    private Date birthdate;
 
     @Column(name = "description")
-    String description;
+    private String description;
 }

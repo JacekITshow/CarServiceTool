@@ -2,11 +2,11 @@ package pl.itshow.java.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.itshow.java.dto.CarDto;
+import pl.itshow.java.dto.LazyLoadingDataDto;
 import pl.itshow.java.entity.Car;
+import pl.itshow.java.repository.CarDao;
 import pl.itshow.java.repository.CarRepository;
 
 import java.util.List;
@@ -16,7 +16,10 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    CarRepository carRepository;
+    private CarRepository carRepository;
+
+    @Autowired
+    private CarDao carDao;
 
     @GetMapping("/{carId}")
     Car getCarById (@PathVariable int carId) {
@@ -26,5 +29,10 @@ public class CarController {
     @GetMapping("/all")
     public List<Car> getAllCars () {
         return carRepository.findAll();
+    }
+
+    @GetMapping("/lazy")
+    public List<CarDto> getAllCars (@RequestBody LazyLoadingDataDto lazyLoadingDataDto) {
+        return carDao.findAllLazy(lazyLoadingDataDto);
     }
 }

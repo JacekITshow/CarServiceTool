@@ -90,7 +90,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
         }
     }
 
-    private User mapUserDtoToUserEntity (User user, UserDto userDto) {
+    private User mapUserDtoToUserEntity(User user, UserDto userDto) {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setGender(userDto.getGender());

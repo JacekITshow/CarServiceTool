@@ -1,10 +1,7 @@
 package pl.itshow.java.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "car")
@@ -22,7 +19,7 @@ public class Car {
     private Long customerId;
 
     @Column(name = "plate")
-    private String plane;
+    private String plate;
 
     @Column(name = "plate_country")
     private String plateCountry;
