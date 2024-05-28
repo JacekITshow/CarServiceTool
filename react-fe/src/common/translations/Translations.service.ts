@@ -1,7 +1,7 @@
 import {ColumnMeta, ResponseLazyLoadingDataDto, TranslationDto} from "../../App.service";
 import {DataTableStateEvent} from "primereact/datatable";
 import {UrlBuilder} from "../urlBuilder/UrlBuilder";
-import {post, postData} from "../urlBuilder/GenericHttp";
+import {postData} from "../urlBuilder/GenericHttp";
 
 export const initialDataTableStateEvent: DataTableStateEvent = {
     first: 0,

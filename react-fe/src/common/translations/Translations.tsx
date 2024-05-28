@@ -75,7 +75,7 @@ export const Translations: React.FC = () => {
                        onFilter={onFilter} filterDisplay="row" loading={loading} filterClearIcon={false}
                        selectionMode="single" onSelectionChange={onSelectionFamilyChange} selection={selectedTranslation}
             >
-                {columns.map((col, i) => (
+                {columns.map((col) => (
                     <Column field={col.field} sortField={col.lazyField} filterField={col.lazyField} header={col.header}
                             style={col.style} sortable={col.sortable} filter={col.filter} showFilterMenu={col.showFilterMenu}
                             align={col.align} alignHeader={col.alignHeader} hidden={col.hidden}/>
