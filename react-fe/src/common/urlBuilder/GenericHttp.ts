@@ -50,3 +50,12 @@ export const post = async <T>(url: string, params?: any): Promise<T> => {
         })
     return response.data;
 };
+
+export const postData = async <T>(url: string, data?: any): Promise<T> => {
+    window.dispatchEvent((getHttpRequestStartedEvent(url)));
+    const response = await create.post<T>(url, data)
+        .finally(() => {
+            window.dispatchEvent(getHttpRequestEndedEvent(url))
+        })
+    return response.data;
+};
