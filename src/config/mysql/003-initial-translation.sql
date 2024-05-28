@@ -1,7 +1,7 @@
 -- Create Table language
 CREATE TABLE language
 (
-    id   INT          NOT NULL AUTO_INCREMENT,
+    id   BIGINT          NOT NULL AUTO_INCREMENT,
     
     name VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
@@ -16,8 +16,8 @@ VALUES (1, 'Polish'),
 -- Create Table translation
 CREATE TABLE translation
 (
-    id          INT          NOT NULL AUTO_INCREMENT,
-    language_id INT          NOT NULL,
+    id          BIGINT          NOT NULL AUTO_INCREMENT,
+    language_id BIGINT          NOT NULL,
     `key`       VARCHAR(255) NOT NULL,
     translation TEXT         NOT NULL,
     PRIMARY KEY (id),
