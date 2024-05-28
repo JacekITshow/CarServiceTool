@@ -1,11 +1,18 @@
 package pl.itshow.java.repository;
 
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.itshow.java.dto.TranslationDto;
+import pl.itshow.java.dto.lazyLoadingDataTable.DataTableStateEvent;
+import pl.itshow.java.dto.lazyLoadingDataTable.ResponseLazyLoadingDataDto;
 import pl.itshow.java.entity.Translation;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -56,5 +63,48 @@ public class TranslationDaoImpl extends AbstractDaoImpl implements TranslationDa
         translation.setTranslation(translation.getTranslation());
 
         return translation;
+    }
+
+    @Override
+    public void getTranslationsLazy(ResponseLazyLoadingDataDto<TranslationDto> responseLazyLoadingDataDto,
+                                    final DataTableStateEvent dataTableStateEvent) {
+
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<TranslationDto> cq = cb.createQuery(TranslationDto.class);
+
+
+        Map<String, From<?, ?>> filterObjects = new HashMap<>();
+        Root<Translation> translationRoot = cq.from(Translation.class);
+        filterObjects.put("Translation", translationRoot);
+
+        List<Predicate> predicateList = new ArrayList<>();
+        List<Order> orderList = new ArrayList<>();
+
+        cq.multiselect(
+                translationRoot.get("id"),
+                translationRoot.get("languageId"),
+                translationRoot.get("key"),
+                translationRoot.get("translation")
+        );
+
+        cq.groupBy(translationRoot.get("id"));
+
+        applyFilterMap(filterObjects, predicateList, dataTableStateEvent);
+        applySortMap(filterObjects, orderList, dataTableStateEvent);
+
+        cq.where(cb.and(predicateList.toArray(new Predicate[0])));
+        cq.orderBy(orderList);
+
+        TypedQuery<TranslationDto> query = entityManager.createQuery(cq);
+
+        responseLazyLoadingDataDto.setTotalRecords(query.getResultList().size());
+
+        if (dataTableStateEvent.getFirst() >= 0) {
+            query.setFirstResult(dataTableStateEvent.getFirst());
+            if (dataTableStateEvent.getRows() > 0) {
+                query.setMaxResults(dataTableStateEvent.getRows());
+            }
+        }
+        responseLazyLoadingDataDto.setRows(query.getResultList());
     }
 }
