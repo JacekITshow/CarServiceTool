@@ -4,6 +4,8 @@ package pl.itshow.java.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.itshow.java.dto.TranslationDto;
+import pl.itshow.java.dto.lazyLoadingDataTable.DataTableStateEvent;
+import pl.itshow.java.dto.lazyLoadingDataTable.ResponseLazyLoadingDataDto;
 import pl.itshow.java.entity.Translation;
 import pl.itshow.java.repository.TranslationDao;
 import pl.itshow.java.repository.TranslationRepository;
@@ -38,5 +40,11 @@ public class TranslationController {
     @PostMapping("/createTranslations")
     public void createTranslations (List<TranslationDto> translationDtos) {
         translationDao.createTranslations(translationDtos);
+    }
+
+    @PostMapping("/lazy")
+    public ResponseLazyLoadingDataDto<TranslationDto> getTranslationsLazy(@RequestBody DataTableStateEvent dataTableStateEvent) {
+        List<Translation> translationDtos = translationRepository.findAll();
+        return new ResponseLazyLoadingDataDto<TranslationDto>();
     }
 }

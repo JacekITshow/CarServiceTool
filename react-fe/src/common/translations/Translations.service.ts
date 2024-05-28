@@ -1,4 +1,4 @@
-import {ColumnMeta, ResponseLazyLoadingDataDto, TranslationDto} from "../../App.service";
+import {ColumnMeta, ResponseLazyLoadingDataDto} from "../../App.service";
 import {DataTableStateEvent} from "primereact/datatable";
 import {UrlBuilder} from "../urlBuilder/UrlBuilder";
 import {postData} from "../urlBuilder/GenericHttp";
@@ -12,6 +12,19 @@ export const initialDataTableStateEvent: DataTableStateEvent = {
     multiSortMeta: [],
     filters: {}
 };
+
+export interface TranslationDto {
+    id: number,
+    language: LanguageDto,
+    key: string,
+    translation: string
+}
+
+export interface LanguageDto {
+    id: number,
+    name: string
+}
+
 export const columns: ColumnMeta[] = [
     {
         field: 'languageId',
