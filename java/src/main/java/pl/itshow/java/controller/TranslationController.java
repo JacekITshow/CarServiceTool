@@ -9,6 +9,7 @@ import pl.itshow.java.dto.lazyLoadingDataTable.ResponseLazyLoadingDataDto;
 import pl.itshow.java.entity.Translation;
 import pl.itshow.java.repository.TranslationDao;
 import pl.itshow.java.repository.TranslationRepository;
+import pl.itshow.java.service.TranslationService;
 
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class TranslationController {
 
     @Autowired
     TranslationDao translationDao;
+
+    @Autowired
+    TranslationService translationService;
 
     @GetMapping("/all")
     public List<Translation> getAllTranslations () {
