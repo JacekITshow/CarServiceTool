@@ -23,7 +23,6 @@ public class TranslationController {
     @Autowired
     TranslationDao translationDao;
 
-    @Autowired
     TranslationService translationService;
 
     @GetMapping("/all")
@@ -48,7 +47,6 @@ public class TranslationController {
 
     @PostMapping("/lazy")
     public ResponseLazyLoadingDataDto<TranslationDto> getTranslationsLazy(@RequestBody DataTableStateEvent dataTableStateEvent) {
-        List<Translation> translationDtos = translationRepository.findAll();
-        return new ResponseLazyLoadingDataDto<TranslationDto>();
+        return translationService.getTranslationLazy(dataTableStateEvent);
     }
 }
