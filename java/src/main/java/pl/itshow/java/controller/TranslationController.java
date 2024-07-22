@@ -11,8 +11,6 @@ import pl.itshow.java.repository.TranslationDao;
 import pl.itshow.java.repository.TranslationRepository;
 import pl.itshow.java.service.TranslationService;
 
-import java.util.function.*
-
 import java.util.List;
 
 @RestController
@@ -28,22 +26,22 @@ public class TranslationController {
     TranslationService translationService;
 
     @GetMapping("/all")
-    public List<Translation> getAllTranslations () {
+    public List<Translation> getAllTranslations() {
         return translationRepository.findAll();
     }
 
     @GetMapping("/language/{langaugeId}")
-    public List<Translation> getAllTranslations (@PathVariable int langaugeId) {
+    public List<Translation> getAllTranslations(@PathVariable int langaugeId) {
         return translationRepository.findTranslationsByLanguageId(langaugeId);
     }
 
     @PostMapping("/createTranslation")
-    public void createTranslation (TranslationDto translationDto) {
+    public void createTranslation(TranslationDto translationDto) {
         translationDao.createTranslation(translationDto);
     }
 
     @PostMapping("/createTranslations")
-    public void createTranslations (List<TranslationDto> translationDtos) {
+    public void createTranslations(List<TranslationDto> translationDtos) {
         translationDao.createTranslations(translationDtos);
     }
 
