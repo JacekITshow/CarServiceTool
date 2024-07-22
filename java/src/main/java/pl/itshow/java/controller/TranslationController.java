@@ -11,6 +11,8 @@ import pl.itshow.java.repository.TranslationDao;
 import pl.itshow.java.repository.TranslationRepository;
 import pl.itshow.java.service.TranslationService;
 
+import java.util.function.*
+
 import java.util.List;
 
 @RestController

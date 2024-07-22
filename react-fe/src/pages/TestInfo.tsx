@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {get} from "../common/urlBuilder/GenericHttp";
 import {UrlBuilder} from "../common/urlBuilder/UrlBuilder";
 import {Button} from "primereact/button";
-import translations from "../common/translations/Translations";
 
 export const TestInfo: React.FC = () => {
 
