@@ -1,13 +1,13 @@
 package pl.itshow.java.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.itshow.java.entity.Customer;
+import pl.itshow.java.entity.customer.CustomerPo;
 
 import java.util.List;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<CustomerPo, Long> {
 
-    Customer findById(int id);
+    CustomerPo findById(int id);
 
-    List<Customer> findAll();
+    List<CustomerPo> findAll();
 }

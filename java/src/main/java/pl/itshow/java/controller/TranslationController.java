@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.itshow.java.dto.TranslationDto;
 import pl.itshow.java.dto.lazyLoadingDataTable.DataTableStateEvent;
 import pl.itshow.java.dto.lazyLoadingDataTable.ResponseLazyLoadingDataDto;
-import pl.itshow.java.entity.Translation;
+import pl.itshow.java.entity.i18.TranslationPo;
 import pl.itshow.java.repository.TranslationDao;
 import pl.itshow.java.repository.TranslationRepository;
 import pl.itshow.java.service.TranslationService;
@@ -26,12 +26,12 @@ public class TranslationController {
     TranslationService translationService;
 
     @GetMapping("/all")
-    public List<Translation> getAllTranslations() {
+    public List<TranslationPo> getAllTranslations() {
         return translationRepository.findAll();
     }
 
     @GetMapping("/language/{langaugeId}")
-    public List<Translation> getAllTranslations(@PathVariable int langaugeId) {
+    public List<TranslationPo> getAllTranslations(@PathVariable int langaugeId) {
         return translationRepository.findTranslationsByLanguageId(langaugeId);
     }
 

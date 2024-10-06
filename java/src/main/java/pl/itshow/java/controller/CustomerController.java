@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.itshow.java.dto.CustomerDto;
-import pl.itshow.java.entity.Customer;
+import pl.itshow.java.entity.customer.CustomerPo;
 import pl.itshow.java.repository.CustomerDaoImpl;
 import pl.itshow.java.repository.CustomerRepository;
 
@@ -29,12 +29,12 @@ public class CustomerController {
     }
 
     @GetMapping("/{customerId}")
-    Customer getCustomerById (@PathVariable int customerId) {
+    CustomerPo getCustomerById (@PathVariable int customerId) {
         return customerRepository.findById(customerId);
     }
 
     @GetMapping("/all")
-    List<Customer> getAllCustomers() {
+    List<CustomerPo> getAllCustomers() {
         return customerRepository.findAll();
     }
 }

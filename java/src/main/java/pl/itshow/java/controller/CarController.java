@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.itshow.java.dto.CarDto;
 import pl.itshow.java.dto.LazyLoadingDataDto;
-import pl.itshow.java.entity.Car;
+import pl.itshow.java.entity.car.CarPo;
 import pl.itshow.java.repository.CarDao;
 import pl.itshow.java.repository.CarRepository;
 
@@ -22,12 +22,12 @@ public class CarController {
     private CarDao carDao;
 
     @GetMapping("/{carId}")
-    Car getCarById (@PathVariable int carId) {
+    CarPo getCarById (@PathVariable int carId) {
         return carRepository.findById(carId);
     }
 
     @GetMapping("/all")
-    public List<Car> getAllCars () {
+    public List<CarPo> getAllCars () {
         return carRepository.findAll();
     }
 

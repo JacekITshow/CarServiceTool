@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import pl.itshow.java.dto.TranslationDto;
 import pl.itshow.java.dto.lazyLoadingDataTable.DataTableStateEvent;
 import pl.itshow.java.dto.lazyLoadingDataTable.ResponseLazyLoadingDataDto;
-import pl.itshow.java.entity.Translation;
+import pl.itshow.java.entity.i18.TranslationPo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class TranslationDaoImpl extends AbstractDaoImpl implements TranslationDa
 
     @Override
     public void createTranslation(TranslationDto translationDto) {
-        final Translation translation = Translation.builder()
+        final TranslationPo translation = TranslationPo.builder()
                 .languageId(translationDto.getLanguageId())
                 .key(translationDto.getKey())
                 .translation(translationDto.getTranslation())
@@ -44,7 +44,7 @@ public class TranslationDaoImpl extends AbstractDaoImpl implements TranslationDa
 
     @Override
     public void updateTranslation(TranslationDto translationDto) {
-        Translation translation = translationRepository.findById(translationDto.getId())
+        TranslationPo translation = translationRepository.findById(translationDto.getId())
                 .orElseThrow(() -> new IllegalArgumentException("Translation not found. Delete completed failure."));
         translation = mapTranslationDtoToTranslation(translation, translationDto);
         translationRepository.save(translation);
@@ -52,12 +52,12 @@ public class TranslationDaoImpl extends AbstractDaoImpl implements TranslationDa
 
     @Override
     public void deleteTranslation(Long translationId) {
-        Translation translation = translationRepository.findById(translationId)
+        TranslationPo translation = translationRepository.findById(translationId)
                 .orElseThrow(() -> new IllegalArgumentException("Translation not found. Delete completed failure."));
         translationRepository.delete(translation);
     }
 
-    private Translation mapTranslationDtoToTranslation(Translation translation, TranslationDto translationDto) {
+    private TranslationPo mapTranslationDtoToTranslation(TranslationPo translation, TranslationDto translationDto) {
         translation.setLanguageId(translationDto.getLanguageId());
         translation.setKey(translation.getKey());
         translation.setTranslation(translation.getTranslation());
@@ -74,7 +74,7 @@ public class TranslationDaoImpl extends AbstractDaoImpl implements TranslationDa
 
 
         Map<String, From<?, ?>> filterObjects = new HashMap<>();
-        Root<Translation> translationRoot = cq.from(Translation.class);
+        Root<TranslationPo> translationRoot = cq.from(TranslationPo.class);
         filterObjects.put("Translation", translationRoot);
 
         List<Predicate> predicateList = new ArrayList<>();

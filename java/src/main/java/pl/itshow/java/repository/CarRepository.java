@@ -2,18 +2,18 @@ package pl.itshow.java.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import pl.itshow.java.entity.Car;
+import pl.itshow.java.entity.car.CarPo;
 
 import java.util.List;
 
-public interface CarRepository extends JpaRepository<Car, Long> {
+public interface CarRepository extends JpaRepository<CarPo, Long> {
 
-    Car findById(int id);
+    CarPo findById(int id);
 
-    List<Car> findAll();
+    List<CarPo> findAll();
 
     @Query(value = "select car.* from car where car.vin = ?1",
             nativeQuery = true)
-    Car findByVin(String brand);
+    CarPo findByVin(String brand);
 
 }

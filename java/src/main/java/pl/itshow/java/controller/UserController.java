@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pl.itshow.java.dto.UserDto;
-import pl.itshow.java.entity.User;
+import pl.itshow.java.entity.user.UserPo;
 import pl.itshow.java.repository.UserDao;
 import pl.itshow.java.repository.UserRepository;
 
@@ -23,17 +23,17 @@ public class UserController {
     UserDao userDao;
 
     @GetMapping("/all")
-    List<User> getUser() {
+    List<UserPo> getUser() {
         return userRepository.findAll();
     }
 
     @GetMapping("/{userId}")
-    public User getUserById (@PathVariable int userId) {
+    public UserPo getUserById (@PathVariable int userId) {
         return userRepository.findById(userId);
     }
 
     @GetMapping("/list/{page}")
-    public Page<User> getUsersListForPage (@PathVariable int page) {
+    public Page<UserPo> getUsersListForPage (@PathVariable int page) {
         Pageable pageable = Pageable.ofSize(2).withPage(page);
         return userRepository.findAll(pageable);
     }
@@ -44,11 +44,6 @@ public class UserController {
     }
 
     @PostMapping("/update/password")
-    public void updateUserPassword (@RequestBody int userId, @RequestBody String password) {
-        userDao.updateUserPassword(userId, password);
-    }
-
-    @PostMapping("/reset/?email")
     public void updateUserPassword (@RequestBody int userId, @RequestBody String password) {
         userDao.updateUserPassword(userId, password);
     }

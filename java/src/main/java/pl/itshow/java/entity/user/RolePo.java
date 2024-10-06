@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Role {
+public class RolePo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,5 +27,5 @@ public class Role {
     @JoinTable(name = "permission_to_role",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    private Set<Permission> permissions;
+    private Set<PermissionPo> permissions;
 }

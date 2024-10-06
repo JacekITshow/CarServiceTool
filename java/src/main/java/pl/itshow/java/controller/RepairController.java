@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.itshow.java.entity.Repair;
+import pl.itshow.java.entity.car.RepairPo;
 import pl.itshow.java.repository.RepairRepository;
 
 import java.util.List;
@@ -19,12 +19,12 @@ public class RepairController {
     RepairRepository repairRepository;
 
     @GetMapping("/all")
-    List<Repair> getAllRepair() {
+    List<RepairPo> getAllRepair() {
         return repairRepository.findAll();
     }
 
     @GetMapping("/{repairId}")
-    public Repair getRepairById (@PathVariable int repairId) {
+    public RepairPo getRepairById (@PathVariable int repairId) {
         return repairRepository.findById(repairId);
     }
 }

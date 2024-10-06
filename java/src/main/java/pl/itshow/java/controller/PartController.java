@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.itshow.java.entity.Part;
+import pl.itshow.java.entity.car.PartPo;
 import pl.itshow.java.repository.PartRepository;
 
 import java.util.List;
@@ -19,12 +19,12 @@ public class PartController {
     PartRepository partRepository;
 
     @GetMapping("/{partId}")
-    Part getPartById (@PathVariable int partId) {
+    PartPo getPartById (@PathVariable int partId) {
         return partRepository.findById(partId);
     }
 
     @GetMapping("/all")
-    public List<Part> getAllParts () {
+    public List<PartPo> getAllParts () {
         return partRepository.findAll();
     }
 }

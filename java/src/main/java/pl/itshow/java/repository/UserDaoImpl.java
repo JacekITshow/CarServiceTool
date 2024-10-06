@@ -3,7 +3,7 @@ package pl.itshow.java.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.itshow.java.dto.UserDto;
-import pl.itshow.java.entity.User;
+import pl.itshow.java.entity.user.UserPo;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +18,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
     @Override
     public void createUser(UserDto userDto) {
 //        String encryptedPassowrd = new BCryptPasswordEncoder().encode(userDto.getPassword());
-        final User user = User.builder()
+        final UserPo user = UserPo.builder()
                 .login(userDto.getLogin())
                 .password(userDto.getPassword())
                 .firstName(userDto.getFirstName())
@@ -38,10 +38,10 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
 
     @Override
     public void updateUser(UserDto userDto) {
-        User user = userRepository.findById(userDto.getId())
+        UserPo user = userRepository.findById(userDto.getId())
                 .orElseThrow(() -> new IllegalArgumentException("User with ID: " + userDto.getId() + " doesn't not exists"));
 
-        User updatedUser = mapUserDtoToUserEntity(user, userDto);
+        UserPo updatedUser = mapUserDtoToUserEntity(user, userDto);
         try {
             userRepository.save(updatedUser);
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
     @Override
     public void updateUserPassword(int userId, String password) {
         try {
-            User user = userRepository.findById(userId);
+            UserPo user = userRepository.findById(userId);
             logger.debug("User finded by id: " + userId + " for update password.");
             user.setPassword(password);
             userRepository.save(user);
@@ -66,7 +66,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
     @Override
     public void updateUserEmail(int userId, String email) {
         try {
-            User user = userRepository.findById(userId);
+            UserPo user = userRepository.findById(userId);
             logger.debug("User finded by id: " + userId + " for update email.");
             user.setEmail(email);
             userRepository.save(user);
@@ -80,7 +80,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
     @Override
     public void deleteUser(int userId) {
         try {
-            User user = userRepository.findById(userId);
+            UserPo user = userRepository.findById(userId);
             logger.debug("User finded by id: " + userId + " for delete user.");
             userRepository.delete(user);
             logger.debug("Delete user with id: " + userId + " completed successfully.");
@@ -90,7 +90,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao {
         }
     }
 
-    private User mapUserDtoToUserEntity(User user, UserDto userDto) {
+    private UserPo mapUserDtoToUserEntity(UserPo user, UserDto userDto) {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setGender(userDto.getGender());

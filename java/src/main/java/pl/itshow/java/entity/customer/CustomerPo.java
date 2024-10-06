@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.customer;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+public class CustomerPo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

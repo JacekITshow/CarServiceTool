@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.car;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +9,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car {
+public class CarPo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

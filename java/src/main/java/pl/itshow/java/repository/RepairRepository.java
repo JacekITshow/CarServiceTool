@@ -1,9 +1,9 @@
 package pl.itshow.java.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.itshow.java.entity.Repair;
+import pl.itshow.java.entity.car.RepairPo;
 
-public interface RepairRepository extends JpaRepository<Repair, Long> {
+public interface RepairRepository extends JpaRepository<RepairPo, Long> {
 
-    Repair findById(int id);
+    RepairPo findById(int id);
 }

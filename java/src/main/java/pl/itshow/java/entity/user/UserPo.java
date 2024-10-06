@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserPo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,5 +52,5 @@ public class User {
     @JoinTable(name = "role_to_user",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Set<RolePo> roles;
 }

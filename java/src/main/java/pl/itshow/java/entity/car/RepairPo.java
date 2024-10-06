@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.car;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Repair {
+public class RepairPo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,8 +37,8 @@ public class Repair {
     private String description;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy="repair")
-    private Set<ServiceToRepair> serviceToRepairs;
+    private Set<ServiceToRepairPo> serviceToRepairs;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy="repair")
-    private Set<Part> parts;
+    private Set<PartPo> parts;
 }

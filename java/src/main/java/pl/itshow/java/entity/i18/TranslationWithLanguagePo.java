@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.i18;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TranslationWithLanguage {
+public class TranslationWithLanguagePo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +20,7 @@ public class TranslationWithLanguage {
 
     @ManyToOne
     @JoinColumn(name = "language_id")
-    private Language language;
+    private LanguagePo language;
 
     @Column(name = "key")
     private String key;

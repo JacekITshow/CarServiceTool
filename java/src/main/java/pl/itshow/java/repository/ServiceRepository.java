@@ -1,15 +1,13 @@
 package pl.itshow.java.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import pl.itshow.java.entity.Car;
-import pl.itshow.java.entity.Service;
+import pl.itshow.java.entity.car.ServicePo;
 
 import java.util.List;
 
-public interface ServiceRepository extends JpaRepository<Service, Long> {
+public interface ServiceRepository extends JpaRepository<ServicePo, Long> {
 
-    Service findById(int id);
+    ServicePo findById(int id);
 
-    List<Service> findAll();
+    List<ServicePo> findAll();
 }

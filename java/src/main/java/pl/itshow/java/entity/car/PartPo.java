@@ -1,4 +1,4 @@
-package pl.itshow.java.entity;
+package pl.itshow.java.entity.car;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "service_to_repair")
+@Table(name = "part")
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceToRepair {
+public class PartPo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,12 +24,17 @@ public class ServiceToRepair {
     @ManyToOne
     @JoinColumn(name = "repair_id")
     @JsonIgnore
-    private Repair repair;
+    private RepairPo repair;
 
-    @ManyToOne
-    @JoinColumn(name = "service_id")
-    private Service service;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "cost", precision = 10, scale = 2)
     private BigDecimal cost;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "part_code")
+    private String partCode;
 }

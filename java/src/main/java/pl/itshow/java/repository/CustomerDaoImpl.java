@@ -7,7 +7,7 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 import pl.itshow.java.dto.CustomerDto;
-import pl.itshow.java.entity.Customer;
+import pl.itshow.java.entity.customer.CustomerPo;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class CustomerDaoImpl extends AbstractDaoImpl implements CustomerDao {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<CustomerDto> cq = cb.createQuery(CustomerDto.class);
 
-        Root<Customer> customerRoot = cq.from(Customer.class);
+        Root<CustomerPo> customerRoot = cq.from(CustomerPo.class);
         Predicate predicate = cb.equal(customerRoot.get("gender"), gender);
         cq.where(predicate);
         cq.select(cb.construct(CustomerDto.class,

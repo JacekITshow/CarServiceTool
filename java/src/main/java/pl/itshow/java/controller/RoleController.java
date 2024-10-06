@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.itshow.java.entity.Role;
+import pl.itshow.java.entity.user.RolePo;
 import pl.itshow.java.repository.RoleRepository;
 
 import java.util.List;
@@ -19,12 +19,12 @@ public class RoleController {
     RoleRepository roleRepository;
 
     @GetMapping("/{roleId}")
-    Role getRoleById (@PathVariable int roleId) {
+    RolePo getRoleById (@PathVariable int roleId) {
         return roleRepository.findById(roleId);
     }
 
     @GetMapping("/all")
-    List<Role> getAllRoles() {
+    List<RolePo> getAllRoles() {
         return roleRepository.findAll();
     }
 }

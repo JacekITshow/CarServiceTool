@@ -1,10 +1,9 @@
 package pl.itshow.java.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.itshow.java.entity.Permission;
-import pl.itshow.java.entity.Repair;
+import pl.itshow.java.entity.user.PermissionPo;
 
-public interface PermissionRepository extends JpaRepository<Permission, Long> {
+public interface PermissionRepository extends JpaRepository<PermissionPo, Long> {
 
-    Permission findById(int id);
+    PermissionPo findById(int id);
 }

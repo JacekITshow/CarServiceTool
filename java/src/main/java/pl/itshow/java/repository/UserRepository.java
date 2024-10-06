@@ -1,9 +1,11 @@
 package pl.itshow.java.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import pl.itshow.java.entity.User;
+import pl.itshow.java.entity.user.UserPo;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserPo, Long> {
 
-    User findById(long id);
+    UserPo findById(long id);
+
+    UserPo findByEmail(String email);
 }
