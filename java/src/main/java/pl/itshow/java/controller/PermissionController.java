@@ -7,14 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.itshow.java.entity.Permission;
-import pl.itshow.java.entity.Service;
 import pl.itshow.java.repository.PermissionRepository;
-import pl.itshow.java.repository.ServiceRepository;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/permission")
+@RequestMapping("/api/permission")
 public class PermissionController {
 
     @Autowired

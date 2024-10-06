@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseUrl: string = "http://localhost:8080";
+/* Here you can define for what address you want to connect when you run react app in IDE */
+const baseUrl: string = window.location.origin == "http://localhost:3000" ? "http://localhost:9080" : window.location.origin;
 
 export const getBaseURL = (): string => {
     return baseUrl;

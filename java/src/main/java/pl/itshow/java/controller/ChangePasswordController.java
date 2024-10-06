@@ -8,7 +8,7 @@ import pl.itshow.java.repository.ChangePasswordRepository;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/changepassword")
+@RequestMapping("/api/changepassword")
 public class ChangePasswordController {
 
     @Autowired

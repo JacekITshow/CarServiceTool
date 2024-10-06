@@ -3,9 +3,8 @@ export interface ColumnMeta {
     header: string;
 }
 
-export interface UserDto {
+export interface CustomerDto {
     id: number;
-    login: string;
     first_name: string;
     last_name: string;
     gender: string;

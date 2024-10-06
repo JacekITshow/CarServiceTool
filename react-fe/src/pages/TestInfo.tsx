@@ -8,7 +8,7 @@ export const TestInfo: React.FC = () => {
     const [info, setInfo] = useState<string>();
 
     const getInfo = (): Promise<string> => {
-        return get<string>(new UrlBuilder().path("test").path("info").build());
+        return get<string>(new UrlBuilder().path("api").path("test").path("info").build());
     };
 
     const setNewInfo = async () => {
@@ -18,6 +18,7 @@ export const TestInfo: React.FC = () => {
 
     return (
         <div>
+            
             <Button onClick={setNewInfo}>current time</Button>
             <h1>{info} </h1>
             <h1>{}</h1>

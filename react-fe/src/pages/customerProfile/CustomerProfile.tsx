@@ -2,23 +2,23 @@ import React, {FC, useEffect, useState} from 'react';
 import {Button} from "primereact/button";
 import {Checkbox} from "primereact/checkbox";
 import {InputText} from "primereact/inputtext";
-import {getUserData, UserDto} from "./UserProfile.service";
+import {getUserData, CustomerDto} from "./CustomerProfile.service";
 
-interface UserProfileProps {
-    userId: number;
+interface CustomerProfileProps {
+    customerId: number;
 }
 
-    export default function UserProfile() {
+    export default function CustomerProfile() {
 
     const [checked, setChecked] = useState(false);
-    const [userDto, setUserDto] = useState<UserDto>();
+    const [customerDto, setUserDto] = useState<CustomerDto>();
 
     useEffect(() => {
         getUserDto(1);
     }, []);
 
     const getUserDto = async (userId: number): Promise<void> => {
-        const userDto: UserDto = await getUserData(userId);
+        const userDto: CustomerDto = await getUserData(userId);
         setUserDto(userDto);
     };
     return (
@@ -27,7 +27,7 @@ interface UserProfileProps {
             <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
                 <div className="text-center mb-5">
                     <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
-                    <span className="text-600 font-medium line-height-3">{userDto?.login}</span>
+                    <span className="text-600 font-medium line-height-3">{customerDto?.firstName + "" + customerDto?.surname}</span>
                     <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
                 </div>
 

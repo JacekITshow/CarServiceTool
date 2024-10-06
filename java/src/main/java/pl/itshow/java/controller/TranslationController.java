@@ -14,7 +14,7 @@ import pl.itshow.java.service.TranslationService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/translation")
+@RequestMapping("/api/translation")
 public class TranslationController {
 
     @Autowired

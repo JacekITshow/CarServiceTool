@@ -13,7 +13,7 @@ import pl.itshow.java.repository.UserRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
@@ -44,6 +44,11 @@ public class UserController {
     }
 
     @PostMapping("/update/password")
+    public void updateUserPassword (@RequestBody int userId, @RequestBody String password) {
+        userDao.updateUserPassword(userId, password);
+    }
+
+    @PostMapping("/reset/?email")
     public void updateUserPassword (@RequestBody int userId, @RequestBody String password) {
         userDao.updateUserPassword(userId, password);
     }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/api/test")
 public class InfoController {
 
     @GetMapping("/info")

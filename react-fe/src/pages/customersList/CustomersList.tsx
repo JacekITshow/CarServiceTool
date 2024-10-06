@@ -4,19 +4,19 @@ import { Column } from 'primereact/column';
 import {get} from "../../common/urlBuilder/GenericHttp";
 import {UrlBuilder} from "../../common/urlBuilder/UrlBuilder";
 import {Button} from "primereact/button";
-import {ColumnMeta, UserDto} from "./UsersList.service";
+import {ColumnMeta, CustomerDto} from "./CustomersList.service";
 
 
-export default function UsersList() {
+export default function CustomersList() {
 
-    const [users, setUsers] = useState<UserDto[]>();
+    const [customers, setUsers] = useState<CustomerDto[]>();
 
-    const getUsers = (): Promise<UserDto[]> => {
-        return get<UserDto[]>(new UrlBuilder().path("user").path("all").build());
+    const getUsers = (): Promise<CustomerDto[]> => {
+        return get<CustomerDto[]>(new UrlBuilder().path("api").path("user").path("all").build());
     };
 
     const setNewInfo = async () => {
-        const usersList: UserDto[] = await getUsers();
+        const usersList: CustomerDto[] = await getUsers();
         setUsers(usersList);
     };
 
@@ -26,7 +26,6 @@ export default function UsersList() {
 
     const columns: ColumnMeta[] = [
         {field: 'id', header: 'id'},
-        {field: 'login', header: 'Login'},
         {field: 'firstName', header: 'First Name'},
         {field: 'lastName', header: 'Last Name'},
         {field: 'gender', header: 'Gender'},
@@ -39,7 +38,7 @@ export default function UsersList() {
     return (
         <div className="card">
             <Button onClick={setNewInfo}>current time</Button>
-            <DataTable value={users} tableStyle={{ minWidth: '50rem' }}>
+            <DataTable value={customers} tableStyle={{ minWidth: '50rem' }}>
                 {columns.map((col, i) => (
                     <Column key={col.field} field={col.field} header={col.header} />
                 ))}

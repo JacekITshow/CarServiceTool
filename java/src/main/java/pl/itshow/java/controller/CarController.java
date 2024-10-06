@@ -12,7 +12,7 @@ import pl.itshow.java.repository.CarRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/api/car")
 public class CarController {
 
     @Autowired

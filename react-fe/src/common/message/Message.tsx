@@ -8,7 +8,7 @@ interface MyMessageProps {
     toast: React.RefObject<Toast>;
 }
 
-export const MyMessage = (props : MyMessageProps) => {
+export const Message = (props : MyMessageProps) => {
 
     const show = () => {
         props.toast.current?.show({ severity: 'success', summary: 'Success', detail: 'Message work correctly', life: 1000 });

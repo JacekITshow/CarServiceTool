@@ -7,8 +7,16 @@
     <groupId>pl.itshow</groupId>
     <artifactId>CarServiceTool</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+
+    <modules>
+        <module>react-fe</module>
+        <module>java</module>
+    </modules>
 
     <properties>
+        <java.version>17</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

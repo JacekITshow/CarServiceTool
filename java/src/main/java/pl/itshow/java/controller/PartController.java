@@ -6,15 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.itshow.java.entity.Car;
 import pl.itshow.java.entity.Part;
-import pl.itshow.java.repository.CarRepository;
 import pl.itshow.java.repository.PartRepository;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/part")
+@RequestMapping("/api/part")
 public class PartController {
 
     @Autowired

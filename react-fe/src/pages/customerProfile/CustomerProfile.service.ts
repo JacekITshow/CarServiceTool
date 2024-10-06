@@ -6,11 +6,10 @@ export interface ColumnMeta {
     header: string;
 }
 
-export interface UserDto {
+export interface CustomerDto {
     id: number;
-    login: string;
-    first_name: string;
-    last_name: string;
+    firstName: string;
+    surname: string;
     gender: string;
     email: string;
     phone_number: string;
@@ -18,7 +17,7 @@ export interface UserDto {
     description: string;
 }
 
-export const getUserData = (userId: number): Promise<UserDto> => {
-    return get<UserDto>(new UrlBuilder().path("user").value(userId).build());
+export const getUserData = (userId: number): Promise<CustomerDto> => {
+    return get<CustomerDto>(new UrlBuilder().path("api").path("user").value(userId).build());
 };
 
